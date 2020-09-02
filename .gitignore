@@ -1,11 +1,11 @@
-./PyZine/env
-./gcloudSqlProxy/myflaskapp.sql
-./secrets
+PyZine/env
+gcloudSqlProxy/myflaskapp.sql
+secrets/
 
 #terraform
-./gcpPyZineDeploy/secret/
-./gcpPyZineDeploy/ops.tfvars
-./gcpPyZineDeploy/terraform.tfstate.backup
-./gcpPyZineDeploy/terraform.tfstate
+gcpPyZineDeploy/secret/
+gcpPyZineDeploy/ops.tfvars
+gcpPyZineDeploy/terraform.tfstate.backup
+gcpPyZineDeploy/terraform.tfstate
 
 

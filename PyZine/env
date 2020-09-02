@@ -1,4 +1,0 @@
-export DB_USER="zyzyx"
-export DB_PASSWORD="Db455452x.!"
-export DB_NAME="myflaskapp"
-export SECRET_KEY="Db455452x.!"
