@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<main role="main" class="container">
+  <div class="jumbotron text-center">
+    <h1>Welcome to PyZine</h1>
+    <h4 class="lead">Read.Write.Share.inspire</h4>
+    <p>This application is built on the Python Flask framework</p>
+    {% if session.logged_in == NULL %}
+      <a href="/register" class="btn btn-primary btn-lg">Register</a>
+      <a href="/login" class="btn btn-success btn-lg">Login</a>
+    {% endif %}
+  </div>
+</main>
+{% endblock %}

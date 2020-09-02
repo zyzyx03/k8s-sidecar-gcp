@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+
+kind: Deployment
+metadata:
+  name: pyzine
+spec:
+  selector:
+    matchLabels:
+      app: pyzine
+  template:
+    metadata:
+      labels:
+        app: pyzine
+    spec:
+      containers:
+      - name: pyzine
+        image: asia.gcr.io/pyzine-288209/pyzine:0.1
+        env:
+        - name: DB_HOST
+          value: 127.0.0.1
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: cloudsql-db-credentials
+              key: username
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: cloudsql-db-credentials
+              key: password
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: cloudsql-db-credentials
+              key: dbname
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: cloudsql-db-credentials
+              key: secretkey
+
+      - name: cloud-sql-proxy
+        image: gcr.io/cloudsql-docker/gce-proxy:1.17
+        command:
+          - "/cloud_sql_proxy"
+          - "-instances=pyzine-288209:asia-southeast1:pyzine-mysql-1=tcp:3306"
+          - "-credential_file=/secrets/pyzinesqladmin.json"
+        securityContext:
+          # The default Cloud SQL proxy image runs as the
+          # "nonroot" user and group (uid: 65532) by default.
+          runAsNonRoot: true
+        volumeMounts:
+        - name: my-secrets-volume
+          mountPath: ./secrets
+          readOnly: true
+          # [END cloud_sql_proxy_k8s_volume_mount]
+      # [START cloud_sql_proxy_k8s_volume_secret]
+      volumes:
+      - name: my-secrets-volume
+        secret:
+          secretName: cloudsql-instance-credentials
+      # [START cloud_sql_proxy_k8s_volume_secret]
