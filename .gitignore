@@ -1,7 +1,7 @@
 PyZine/env
 gcloudSqlProxy/myflaskapp.sql
 secrets/
-PyZineDeployment/gcpPyZineDeploy/.terraform/
+gcpPyZineDeploy/.terraform/
 
 #terraform
 gcpPyZineDeploy/secret/
