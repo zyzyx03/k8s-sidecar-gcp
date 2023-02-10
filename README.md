@@ -12,7 +12,7 @@
 
 
 <p align="center">
-<img src="https://cdn.pixabay.com/photo/2018/12/14/15/24/motorcycle-3875237_960_720.jpg" width=350 height=230>
+<img src="https://www.watsonian-squire.com/wp-content/uploads/2021/12/Meteor-Prescott2_edited-1.jpg" width=350 height=230>
 </p>
 
 ##### The sidecar container extends and works with the primary container. This pattern is best used when there is a clear difference between a primary container and any secondary tasks that need to be done for it. In this diagram PyZine will serve as a web server that connected to the proxy container and proxy container will authenticate and query cloud SQL when users interacting with PyZine to perform CRUD operation. 
